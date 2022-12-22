@@ -1,11 +1,14 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    kotlin("plugin.serialization") version Deps.kotlinVersion
 }
 
 android {
     namespace = "com.example.dogoodmobile.android"
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
         applicationId = "com.example.dogoodmobile.android"
         minSdk = 21
@@ -17,7 +20,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.0"
+        kotlinCompilerExtensionVersion = Deps.composeVersion
     }
     packagingOptions {
         resources {
@@ -33,10 +36,28 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.2.1")
-    implementation("androidx.compose.ui:ui-tooling:1.2.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.2.1")
-    implementation("androidx.compose.foundation:foundation:1.2.1")
-    implementation("androidx.compose.material:material:1.2.1")
-    implementation("androidx.activity:activity-compose:1.5.1")
+    implementation(Deps.composeUi)
+    implementation(Deps.composeUiTooling)
+    implementation(Deps.composeUiToolingPreview)
+    implementation(Deps.composeFoundation)
+    implementation(Deps.composeMaterial)
+    implementation(Deps.activityCompose)
+    implementation(Deps.composeIconsExtended)
+    implementation(Deps.composeNavigation)
+    implementation(Deps.coilCompose)
+
+    implementation(Deps.hiltAndroid)
+    kapt(Deps.hiltAndroidCompiler)
+    kapt(Deps.hiltCompiler)
+    implementation(Deps.hiltNavigationCompose)
+
+    implementation(Deps.ktorAndroid)
+
+    androidTestImplementation(Deps.testRunner)
+    androidTestImplementation(Deps.jUnit)
+    androidTestImplementation(Deps.composeTesting)
+    debugImplementation(Deps.composeTestManifest)
+
+    kaptAndroidTest(Deps.hiltAndroidCompiler)
+    androidTestImplementation(Deps.hiltTesting)
 }
