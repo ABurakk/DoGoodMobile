@@ -15,7 +15,7 @@ val lightColors = lightColors(
     primary = Green,
     background = LightBlueGrey,
     onPrimary = Color.White,
-    onBackground = TextBlack,
+    onBackground = DarkGrey,
     surface = Color.White,
     onSurface = TextBlack
 )
