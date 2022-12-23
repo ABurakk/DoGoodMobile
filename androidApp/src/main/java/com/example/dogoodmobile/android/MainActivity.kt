@@ -8,15 +8,23 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.dogoodmobile.Greeting
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.dogoodmobile.android.core.presentation.Routes
+import com.example.dogoodmobile.android.main_screen.presentation.AndroidMainScreenViewModel
+import com.example.dogoodmobile.android.main_screen.presentation.MainScreen
+import com.example.dogoodmobile.volunteering.main.presentation.MainScreenEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @Composable
@@ -25,17 +33,9 @@ fun MyApplicationTheme(
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
-        darkColors(
-            primary = Color(0xFFBB86FC),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
-        )
+        com.example.dogoodmobile.android.core.theme.darkColors
     } else {
-        lightColors(
-            primary = Color(0xFF6200EE),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
-        )
+        com.example.dogoodmobile.android.core.theme.lightColors
     }
     val typography = Typography(
         body1 = TextStyle(
@@ -68,9 +68,44 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting(Greeting().greeting())
+                    DoGoodAppNavHost()
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun DoGoodAppNavHost() {
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = Routes.MAIN_SCREEN
+    ) {
+        composable(route = Routes.MAIN_SCREEN) {
+            val viewModel = hiltViewModel<AndroidMainScreenViewModel>()
+            val state by viewModel.state.collectAsState()
+            MainScreen(
+                state = state,
+                onEvent = { event ->
+                    when (event) {
+                        is MainScreenEvent.ChooseVolunteeringType -> {
+                            navController.navigate(Routes.DETAIL + "/${event.id}")
+                        }
+                        is MainScreenEvent.ClickRandomVolunteeringAd -> {
+                            navController.navigate(Routes.DETAIL + "/${event.id}")
+                        }
+                        else -> viewModel.onEvent(event)
+                    }
+
+                }
+            )
+        }
+        composable(route = Routes.LIST) {
+
+        }
+        composable(route = Routes.DETAIL) {
+
         }
     }
 }
