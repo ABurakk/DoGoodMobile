@@ -4,5 +4,6 @@ import com.example.dogoodmobile.core.domain.Volunteering
 
 data class MainScreenState(
     val isVolunteeringListBoxExpanded: Boolean = false,
-    val randomVolunteeringAd: Volunteering? = null
+    val randomVolunteeringAd: Volunteering? = null,
+    val errorText: String? = null
 )
