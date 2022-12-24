@@ -18,7 +18,7 @@ fun DoGoodAppTopAppBar(
     modifier: Modifier = Modifier,
     navigationIcon: @Composable (() -> Unit)? = null,
     actions: @Composable RowScope.() -> Unit = { Spacer(modifier = Modifier.width(64.dp)) },
-    backgroundColor: Color = lightColors.surface,
+    backgroundColor: Color = lightColors.secondary,
     contentColor: Color = lightColors.onBackground,
     elevation: Dp = 0.dp,
     height: Dp = 48.dp
