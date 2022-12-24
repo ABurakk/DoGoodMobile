@@ -5,7 +5,7 @@ import androidx.compose.material.lightColors
 import androidx.compose.ui.graphics.Color
 import com.example.dogoodmobile.core.util.Colors
 
-val Green = Color(Colors.Green)
+val Green = Color(0xE6065A63)
 val LightBlue = Color(Colors.LightBlue)
 val LightBlueGrey = Color(Colors.LightBlueGrey)
 val TextBlack = Color(Colors.TextBlack)
