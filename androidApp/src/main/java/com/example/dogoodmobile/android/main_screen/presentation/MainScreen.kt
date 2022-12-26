@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,15 +22,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.dogoodmobile.android.R
 import com.example.dogoodmobile.android.core.composables.DoGoodAppTopAppBar
 import com.example.dogoodmobile.android.core.composables.ProfileIcon
 import com.example.dogoodmobile.android.core.composables.SettingsIcon
 import com.example.dogoodmobile.android.core.theme.*
+import com.example.dogoodmobile.android.main_screen.presentation.composables.FeaturedAdInfoButton
 import com.example.dogoodmobile.android.main_screen.presentation.composables.VolunteeringButton
+import com.example.dogoodmobile.core.domain.Volunteering
 import com.example.dogoodmobile.core.domain.VolunteeringType
 import com.example.dogoodmobile.volunteering.main.presentation.MainScreenEvent
 import com.example.dogoodmobile.volunteering.main.presentation.MainScreenState
@@ -95,7 +100,7 @@ fun MainScreen(
             }
 
             item {
-                FeaturedAd()
+                FeaturedAd(state.randomVolunteeringAd)
             }
         }
     }
@@ -105,7 +110,7 @@ fun MainScreen(
 fun ProfileHeadline(onStartClick: () -> Unit) {
     Box(
         modifier = Modifier
-            .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 16.dp)
+            .padding(start = 16.dp, end = 16.dp, top = 18.dp, bottom = 16.dp)
             .clip(shape = RoundedCornerShape(size = 12.dp))
             .fillMaxWidth()
             .height(96.dp)
@@ -296,16 +301,42 @@ fun VolunteeringTypeRow2(
 
 
 @Composable
-fun FeaturedAd() {
+fun FeaturedAd(
+    volunteering: Volunteering?
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 32.dp, end = 16.dp, top = 16.dp, bottom = 16.dp)
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = "Featured",
             textAlign = TextAlign.Start,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp,
+            modifier = Modifier
+                .padding(start = 16.dp)
+                .align(Alignment.Start)
         )
+        Box(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Image(
+                alignment = Alignment.Center,
+                painter = painterResource(id = R.drawable.immigration),
+                contentDescription = "",
+                modifier = Modifier
+                    .padding(16.dp)
+                    .clip(RoundedCornerShape(16.dp))
+            )
+
+            FeaturedAdInfoButton(
+                volunteering = volunteering,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(16.dp)
+            )
+        }
     }
 }
