@@ -47,18 +47,39 @@ class MainScreenViewModel(
 
     fun onEvent(event: MainScreenEvent) {
         when (event) {
-            is MainScreenEvent.ClickExpandOrCloseVolunteeringTypes -> {
-                _state.update {
-                    it.copy(
-                        isVolunteeringListBoxExpanded = it.isVolunteeringListBoxExpanded.not()
-                    )
-                }
-            }
             is MainScreenEvent.ErrorSeen -> {
                 _state.update {
                     it.copy(
                         errorText = null
                     )
+                }
+            }
+
+            is MainScreenEvent.ClickRefreshFeaturedAd -> {
+                _state.update {
+                    it.copy(isLoading = true)
+                }
+                viewModelScope.launch {
+                    val result = getRandomVolunteeringUseCase.execute()
+                    println(result.data!!.title)
+                    when (result) {
+                        is Resource.Error -> {
+                            _state.update {
+                                it.copy(
+                                    errorText = result.throwable?.message,
+                                    isLoading = false
+                                )
+                            }
+                        }
+                        is Resource.Success -> {
+                            _state.update {
+                                it.copy(
+                                    randomVolunteeringAd = result.data,
+                                    isLoading = false
+                                )
+                            }
+                        }
+                    }
                 }
             }
             else -> Unit

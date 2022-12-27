@@ -96,8 +96,11 @@ fun MainScreen(
             }
 
             item {
-                FeaturedAd(UiVolunteering(state.randomVolunteeringAd)) {
-
+                FeaturedAd(
+                    UiVolunteering(state.randomVolunteeringAd),
+                    isLoading = state.isLoading
+                ) {
+                    onEvent(MainScreenEvent.ClickRefreshFeaturedAd)
                 }
             }
         }
@@ -301,6 +304,7 @@ fun VolunteeringTypeRow2(
 @Composable
 fun FeaturedAd(
     uiVolunteering: UiVolunteering,
+    isLoading: Boolean,
     onRefreshClick: () -> Unit
 ) {
     Column(
@@ -337,7 +341,7 @@ fun FeaturedAd(
             Box(
                 modifier = Modifier.fillMaxWidth()
             ) {
-            Image(
+                Image(
                     alignment = Alignment.Center,
                     painter = painterResource(id = it),
                     contentDescription = "",
@@ -345,13 +349,18 @@ fun FeaturedAd(
                         .padding(8.dp)
                         .clip(RoundedCornerShape(16.dp))
                 )
-
                 FeaturedAdInfoButton(
                     volunteering = uiVolunteering.volunteering,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .padding(16.dp)
                 )
+                if (isLoading) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.align(Alignment.Center),
+                        color = lightColors.onBackground,
+                    )
+                }
             }
         }
 
