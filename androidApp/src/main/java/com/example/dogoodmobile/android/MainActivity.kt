@@ -18,12 +18,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.dogoodmobile.android.core.presentation.Routes
+import com.example.dogoodmobile.android.detail_screen.presentation.AndroidDetailScreenViewModel
+import com.example.dogoodmobile.android.detail_screen.presentation.DetailScreen
 import com.example.dogoodmobile.android.main_screen.presentation.AndroidMainScreenViewModel
 import com.example.dogoodmobile.android.main_screen.presentation.MainScreen
+import com.example.dogoodmobile.volunteering.detail.presentation.DetailScreenEvent
 import com.example.dogoodmobile.volunteering.main.presentation.MainScreenEvent
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -92,7 +97,7 @@ fun DoGoodAppNavHost() {
                         is MainScreenEvent.ChooseVolunteeringType -> {
                             navController.navigate(Routes.DETAIL + "/${event.id}")
                         }
-                        is MainScreenEvent.ClickRandomVolunteeringAd -> {
+                        is MainScreenEvent.ClickFeaturedVolunteeringAd -> {
                             navController.navigate(Routes.DETAIL + "/${event.id}")
                         }
                         else -> viewModel.onEvent(event)
@@ -104,7 +109,33 @@ fun DoGoodAppNavHost() {
         composable(route = Routes.LIST) {
 
         }
-        composable(route = Routes.DETAIL) {
+        composable(
+            route = Routes.DETAIL + "/{detailId}",
+            arguments = listOf(
+                navArgument("detailId") {
+                    type = NavType.StringType
+                }
+            )
+        ) {
+            val viewModel = hiltViewModel<AndroidDetailScreenViewModel>()
+            val state by viewModel.state.collectAsState()
+            val languageCode = it.arguments?.getString("detailId") ?: "1"
+
+            DetailScreen(
+                state = state,
+                volunteeringDetailId = languageCode,
+                onEvent = { event ->
+                    when (event) {
+                        is DetailScreenEvent.ClickBackButton -> {
+                            navController.navigate(Routes.MAIN_SCREEN)
+                        }
+                        else -> {
+                            viewModel.onEvent(event)
+                        }
+                    }
+
+                }
+            )
 
         }
     }

@@ -98,10 +98,14 @@ fun MainScreen(
             item {
                 FeaturedAd(
                     UiVolunteering(state.randomVolunteeringAd),
-                    isLoading = state.isLoading
-                ) {
-                    onEvent(MainScreenEvent.ClickRefreshFeaturedAd)
-                }
+                    isLoading = state.isLoading,
+                    onRefreshClick = {
+                        onEvent(MainScreenEvent.ClickRefreshFeaturedAd)
+                    },
+                    onVolunteeringDetailClicked = {
+                        onEvent(MainScreenEvent.ClickFeaturedVolunteeringAd(it))
+                    }
+                )
             }
         }
     }
@@ -305,7 +309,8 @@ fun VolunteeringTypeRow2(
 fun FeaturedAd(
     uiVolunteering: UiVolunteering,
     isLoading: Boolean,
-    onRefreshClick: () -> Unit
+    onRefreshClick: () -> Unit,
+    onVolunteeringDetailClicked: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -353,7 +358,10 @@ fun FeaturedAd(
                     volunteering = uiVolunteering.volunteering,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(16.dp)
+                        .padding(16.dp),
+                    onDetailClicked = {
+                        onVolunteeringDetailClicked(it)
+                    }
                 )
                 if (isLoading) {
                     CircularProgressIndicator(

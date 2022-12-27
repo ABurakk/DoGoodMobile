@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class DetailScreenViewModel(
-    private val coroutineScope: CoroutineScope?,
+    coroutineScope: CoroutineScope?,
     private val getVolunteeringById: GetVolunteeringDetailUseCase
 ) {
 
@@ -24,6 +24,14 @@ class DetailScreenViewModel(
 
     fun onEvent(event: DetailScreenEvent) {
         when (event) {
+            is DetailScreenEvent.ErrorSeen -> {
+                _state.update {
+                    it.copy(
+                        errorText = null
+                    )
+                }
+            }
+
             is DetailScreenEvent.LoadVolunteeringDetail -> {
                 viewModelScope.launch {
                     val result = getVolunteeringById.execute(id = event.id.toInt())

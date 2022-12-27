@@ -24,7 +24,8 @@ import com.example.dogoodmobile.core.domain.Volunteering
 @Composable
 fun FeaturedAdInfoButton(
     volunteering: Volunteering?,
-    modifier: Modifier
+    modifier: Modifier,
+    onDetailClicked: (String) -> Unit
 ) {
     Box(
         modifier = modifier
@@ -71,7 +72,7 @@ fun FeaturedAdInfoButton(
                     .clip(shape = RoundedCornerShape(size = 12.dp))
                     .size(48.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = lightColors.primary),
-                onClick = { }) {
+                onClick = { onDetailClicked(volunteering?.type?.id.toString()) }) {
                 Icon(
                     tint = Color.White,
                     imageVector = Icons.Default.KeyboardDoubleArrowRight,
