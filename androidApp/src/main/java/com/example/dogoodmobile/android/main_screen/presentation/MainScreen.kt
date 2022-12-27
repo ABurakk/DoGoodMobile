@@ -10,10 +10,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
@@ -27,14 +24,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.dogoodmobile.android.R
 import com.example.dogoodmobile.android.core.composables.DoGoodAppTopAppBar
 import com.example.dogoodmobile.android.core.composables.ProfileIcon
 import com.example.dogoodmobile.android.core.composables.SettingsIcon
+import com.example.dogoodmobile.android.core.presentation.UiVolunteering
 import com.example.dogoodmobile.android.core.theme.*
 import com.example.dogoodmobile.android.main_screen.presentation.composables.FeaturedAdInfoButton
 import com.example.dogoodmobile.android.main_screen.presentation.composables.VolunteeringButton
-import com.example.dogoodmobile.core.domain.Volunteering
 import com.example.dogoodmobile.core.domain.VolunteeringType
 import com.example.dogoodmobile.volunteering.main.presentation.MainScreenEvent
 import com.example.dogoodmobile.volunteering.main.presentation.MainScreenState
@@ -100,7 +96,9 @@ fun MainScreen(
             }
 
             item {
-                FeaturedAd(state.randomVolunteeringAd)
+                FeaturedAd(UiVolunteering(state.randomVolunteeringAd)) {
+
+                }
             }
         }
     }
@@ -302,41 +300,60 @@ fun VolunteeringTypeRow2(
 
 @Composable
 fun FeaturedAd(
-    volunteering: Volunteering?
+    uiVolunteering: UiVolunteering,
+    onRefreshClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(start = 16.dp, end = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Featured",
-            textAlign = TextAlign.Start,
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
-            modifier = Modifier
-                .padding(start = 16.dp)
-                .align(Alignment.Start)
-        )
-        Box(
-            modifier = Modifier.fillMaxWidth()
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                alignment = Alignment.Center,
-                painter = painterResource(id = R.drawable.immigration),
-                contentDescription = "",
+            Text(
+                text = "Featured",
+                textAlign = TextAlign.Start,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
                 modifier = Modifier
-                    .padding(16.dp)
-                    .clip(RoundedCornerShape(16.dp))
+                    .padding(start = 16.dp)
             )
 
-            FeaturedAdInfoButton(
-                volunteering = volunteering,
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(16.dp)
-            )
+            IconButton(onClick = { onRefreshClick() }) {
+                Icon(
+                    imageVector = Icons.Default.Refresh,
+                    contentDescription = "",
+                )
+            }
         }
+
+
+        uiVolunteering.drawableRes?.let {
+            Box(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+            Image(
+                    alignment = Alignment.Center,
+                    painter = painterResource(id = it),
+                    contentDescription = "",
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                )
+
+                FeaturedAdInfoButton(
+                    volunteering = uiVolunteering.volunteering,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(16.dp)
+                )
+            }
+        }
+
     }
 }
