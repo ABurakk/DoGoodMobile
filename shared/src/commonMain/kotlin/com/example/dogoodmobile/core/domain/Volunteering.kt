@@ -7,5 +7,6 @@ data class Volunteering(
     val title: String,
     val detail: String,
     val ownerName: String,
-    val location: Location
+    val location: Location,
+    val tags: List<String> = listOf()
 )

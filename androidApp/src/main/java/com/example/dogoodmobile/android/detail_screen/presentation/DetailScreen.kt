@@ -22,12 +22,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dogoodmobile.android.core.composables.BackArrowIcon
 import com.example.dogoodmobile.android.core.composables.DoGoodAppTopAppBar
+import com.example.dogoodmobile.android.core.composables.Tag
 import com.example.dogoodmobile.android.core.presentation.UiVolunteering
 import com.example.dogoodmobile.android.core.theme.LightBlue2
 import com.example.dogoodmobile.android.core.theme.lightColors
 import com.example.dogoodmobile.android.main_screen.presentation.composables.VolunteeringButton
 import com.example.dogoodmobile.volunteering.detail.presentation.DetailScreenEvent
 import com.example.dogoodmobile.volunteering.detail.presentation.DetailScreenState
+import com.google.accompanist.flowlayout.FlowRow
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -80,7 +82,7 @@ fun DetailScreenContent(uiVolunteering: UiVolunteering) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 12.dp, start = 30.dp, end = 30.dp)
+            .padding(top = 12.dp, start = 24.dp, end = 24.dp)
     ) {
         item {
             Image(
@@ -157,25 +159,42 @@ fun DetailScreenContent(uiVolunteering: UiVolunteering) {
                     textAlign = TextAlign.Start,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 12.sp,
-                    modifier = Modifier.padding(top = 8.dp)
+                    modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
                 )
+            }
+            Divider(modifier = Modifier.fillMaxWidth())
+        }
+        item {
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Column {
+                Spacer(modifier = Modifier.height(8.dp))
+
+                FlowRow {
+                    for (tag in uiVolunteering.volunteering!!.tags) {
+                        Tag(text = tag)
+                    }
+                }
             }
         }
         item {
-            Button(
-                onClick = {},
-                colors = ButtonDefaults.buttonColors(backgroundColor = lightColors.primary),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(80.dp)
-                    .padding(start = 4.dp, end = 4.dp, top = 16.dp),
-                shape = RoundedCornerShape(size = 12.dp)
-            ) {
-                Text(
-                    text = "Contact Now",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                )
+            Column {
+                Button(
+                    onClick = {},
+                    colors = ButtonDefaults.buttonColors(backgroundColor = lightColors.primary),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(80.dp)
+                        .padding(start = 4.dp, end = 4.dp, top = 16.dp),
+                    shape = RoundedCornerShape(size = 12.dp)
+                ) {
+                    Text(
+                        text = "Contact Now",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp,
+                    )
+                }
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }

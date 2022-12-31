@@ -77,4 +77,6 @@ object Deps {
     const val composeTestManifest = "androidx.compose.ui:ui-test-manifest:$composeVersion"
 
     const val hiltTesting = "com.google.dagger:hilt-android-testing:$hiltVersion"
+
+    const val accompanistFlow = "com.google.accompanist:accompanist-flowlayout:0.28.0"
 }

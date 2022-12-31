@@ -10,7 +10,8 @@ object MockData {
             "Math class for 8-10 years students",
             "Teacher needed for 5 hours a week",
             "Municipality",
-            Location("Turkey", "Ankara")
+            Location("Turkey", "Ankara"),
+            listOf("Education", "Tutoring", "Math", "Children", "Students")
         ),
         Volunteering(
             2,
@@ -18,7 +19,8 @@ object MockData {
             "Health clinic volunteer",
             "Assist with patient intake and record-keeping",
             "Community Health Center",
-            Location("United States", "New York")
+            Location("United States", "New York"),
+            listOf("Medical", "Healthcare", "Volunteer", "Clinic", "Patient care")
         ),
         Volunteering(
             3,
@@ -26,7 +28,8 @@ object MockData {
             "Food bank volunteer",
             "Help sort and distribute donations",
             "Food Bank Inc.",
-            Location("United States", "Chicago")
+            Location("United States", "Chicago"),
+            listOf("Social services", "Volunteer", "Food bank", "Donations")
         ),
         Volunteering(
             4,
@@ -34,7 +37,8 @@ object MockData {
             "Elder care volunteer",
             "Assist with daily activities and provide companionship",
             "Senior Living Facility",
-            Location("United States", "Los Angeles")
+            Location("United States", "Los Angeles"),
+            listOf("Elder care", "Volunteer", "Daily activities", "Companionship", "Senior living")
         ),
         Volunteering(
             5,
@@ -42,7 +46,15 @@ object MockData {
             "Homeless shelter volunteer",
             "Help prepare and serve meals, provide support to residents",
             "Homeless Shelter Inc.",
-            Location("United States", "Miami")
+            Location("United States", "Miami"),
+            listOf(
+                "Homelessness",
+                "Volunteer",
+                "Meal preparation",
+                "Meal service",
+                "Support",
+                "Shelter"
+            )
         ),
         Volunteering(
             6,
@@ -50,7 +62,13 @@ object MockData {
             "Immigration assistance volunteer",
             "Help with document translation and legal assistance",
             "Immigration Legal Aid Society",
-            Location("United States", "San Francisco")
+            Location("United States", "San Francisco"),
+            listOf(
+                "Immigration",
+                "Volunteer",
+                "Translation",
+                "Legal assistance"
+            )
         ),
         Volunteering(
             7,
@@ -58,7 +76,14 @@ object MockData {
             "Animal rescue volunteer",
             "Assist with animal care and feeding at the shelter",
             "Animal Rescue League",
-            Location("United States", "Dallas")
+            Location("United States", "Dallas"),
+            listOf(
+                "Animal rescue",
+                "Volunteer",
+                "Animal care",
+                "Feeding",
+                "Shelter"
+            )
         ),
         Volunteering(
             8,
@@ -66,7 +91,13 @@ object MockData {
             "Disaster relief volunteer",
             "Assist with disaster response and recovery efforts",
             "Disaster Relief Agency",
-            Location("United States", "Houston")
+            Location("United States", "Houston"),
+            listOf(
+                "Disaster relief",
+                "Volunteer",
+                "Disaster response",
+                "Recovery efforts"
+            )
         ),
         Volunteering(
             9,
@@ -74,7 +105,13 @@ object MockData {
             "Hunger relief volunteer",
             "Help prepare and distribute meals to those in need",
             "Hunger Relief Organization",
-            Location("United States", "Atlanta")
+            Location("United States", "Atlanta"),
+            listOf(
+                "Hunger",
+                "Volunteer",
+                "Meal preparation",
+                "Meal distribution"
+            )
         ),
         Volunteering(
             10,
@@ -82,7 +119,8 @@ object MockData {
             "English language class for adults",
             "Teacher needed for 2 hours a week",
             "Community Center",
-            Location("France", "Paris")
+            Location("France", "Paris"),
+            tags = listOf("education", "teaching", "language")
         ),
 
         Volunteering(
@@ -91,7 +129,8 @@ object MockData {
             "Beach clean-up volunteer",
             "Help clean up the beach and protect marine life",
             "Environmental Protection Agency",
-            Location("Spain", "Barcelona")
+            Location("Spain", "Barcelona"),
+            tags = listOf("environmental", "conservation", "outdoor work")
         ),
 
         Volunteering(
@@ -100,7 +139,8 @@ object MockData {
             "Hospital volunteer",
             "Assist with patient care and non-medical tasks",
             "General Hospital",
-            Location("Germany", "Berlin")
+            Location("Germany", "Berlin"),
+            tags = listOf("healthcare", "hospital work")
         ),
 
         Volunteering(
@@ -109,7 +149,8 @@ object MockData {
             "Animal shelter volunteer",
             "Help care for and socialize with the animals",
             "Animal Shelter Society",
-            Location("Italy", "Rome")
+            Location("Italy", "Rome"),
+            tags = listOf("animal care", "shelter work", "teamwork", "communication", "patience")
         )
     )
 }
