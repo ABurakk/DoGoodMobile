@@ -158,7 +158,7 @@ fun ProfileHeadline(onStartClick: () -> Unit) {
 fun VolunteeringTypeIcons(
     onVolunteeringTypeClicked: (String) -> Unit
 ) {
-    var expandedState by remember { mutableStateOf(false) }
+    var expandedState by remember { mutableStateOf(true) }
 
     Column(
         modifier = Modifier
