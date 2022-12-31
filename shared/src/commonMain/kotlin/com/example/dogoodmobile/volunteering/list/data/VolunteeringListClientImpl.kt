@@ -12,6 +12,9 @@ class VolunteeringListClientImpl : VolunteeringListClient {
         city: String?
     ): List<Volunteering> {
         return MockData.volunteeringList()
-            .filter { it.type == type && it.location.country == country && it.location.city == city }
+            .filter {
+                it.type == type && (it.location.country == country && country.isNullOrEmpty()
+                    .not()) && (it.location.city == city && city.isNullOrEmpty().not())
+            }
     }
 }

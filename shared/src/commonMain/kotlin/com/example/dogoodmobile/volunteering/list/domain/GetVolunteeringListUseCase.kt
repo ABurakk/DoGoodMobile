@@ -9,8 +9,8 @@ class GetVolunteeringListUseCase(
 ) {
     suspend fun execute(
         type: VolunteeringType,
-        country: String?,
-        city: String?
+        country: String? = null,
+        city: String? = null
     ): Resource<List<Volunteering>> {
         return try {
             val volunteeringList = client.getVolunteeringByTypeAndLocation(
