@@ -46,7 +46,7 @@ class DetailScreenViewModel(
                         is Resource.Success -> {
                             _state.update {
                                 it.copy(
-                                    volunteering = it.volunteering
+                                    volunteering = result.data
                                 )
                             }
                         }

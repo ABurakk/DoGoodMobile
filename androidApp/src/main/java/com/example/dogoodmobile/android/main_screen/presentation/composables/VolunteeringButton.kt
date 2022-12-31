@@ -25,7 +25,8 @@ fun VolunteeringButton(
     imageVector: ImageVector? = null,
     color: Color,
     name: String,
-    onClick: () -> Unit
+    isTextVisible: Boolean = true,
+    onClick: () -> Unit,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -55,12 +56,14 @@ fun VolunteeringButton(
                 )
             }
         }
-        Spacer(modifier = Modifier.height(6.dp))
-        Text(
-            text = name,
-            fontSize = 12.sp,
-            fontWeight = FontWeight.SemiBold,
-            textAlign = TextAlign.Center
-        )
+        if (isTextVisible) {
+            Spacer(modifier = Modifier.height(6.dp))
+            Text(
+                text = name,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }
