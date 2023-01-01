@@ -1,8 +1,8 @@
 package com.example.dogoodmobile.android.list_screen.presentation.composable
 
-import MockData
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.dogoodmobile.android.core.theme.lightColors
@@ -20,7 +19,8 @@ import com.example.dogoodmobile.core.domain.Volunteering
 
 @Composable
 fun VolunteeringListItem(
-    volunteering: Volunteering
+    volunteering: Volunteering,
+    onVolunteeringButtonClick: (String) -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -31,6 +31,9 @@ fun VolunteeringListItem(
             )
             .fillMaxWidth()
             .padding(16.dp)
+            .clickable {
+                onVolunteeringButtonClick(volunteering.id.toString())
+            }
     ) {
         Row(
             modifier = Modifier
@@ -72,22 +75,6 @@ fun VolunteeringListItem(
             modifier = Modifier
                 .padding(start = 16.dp, end = 4.dp)
                 .align(Alignment.CenterEnd)
-        )
-    }
-}
-
-
-@Preview
-@Composable
-fun VolunteeringListItemPreview() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-    ) {
-        VolunteeringListItem(
-            volunteering =
-            MockData.volunteeringList()[1]
         )
     }
 }

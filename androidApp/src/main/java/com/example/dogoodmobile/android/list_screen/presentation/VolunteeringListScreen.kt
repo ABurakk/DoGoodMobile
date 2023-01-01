@@ -78,7 +78,9 @@ fun VolunteeringListScreen(
             }
             items(count = state.volunteeringList.size) {
                 Spacer(modifier = Modifier.height(16.dp))
-                VolunteeringListItem(volunteering = state.volunteeringList[it])
+                VolunteeringListItem(volunteering = state.volunteeringList[it]) { volunteeringId ->
+                    onEvent(ListScreenEvent.ClickVolunteering(volunteeringId))
+                }
             }
         }
     }

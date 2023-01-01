@@ -49,6 +49,10 @@ class ListScreenViewModel(
                     }
                 }
             }
+            is ListScreenEvent.ClickVolunteering -> {
+
+            }
+
             else -> Unit
         }
     }

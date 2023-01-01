@@ -129,6 +129,9 @@ fun DoGoodAppNavHost() {
                         ListScreenEvent.ClickBackButton -> {
                             navController.navigate(Routes.MAIN_SCREEN)
                         }
+                        is ListScreenEvent.ClickVolunteering -> {
+                            navController.navigate(Routes.DETAIL + "/${event.id}")
+                        }
                         else -> {
                             viewModel.onEvent(event)
                         }
