@@ -26,9 +26,12 @@ import androidx.navigation.navArgument
 import com.example.dogoodmobile.android.core.presentation.Routes
 import com.example.dogoodmobile.android.detail_screen.presentation.AndroidDetailScreenViewModel
 import com.example.dogoodmobile.android.detail_screen.presentation.DetailScreen
+import com.example.dogoodmobile.android.list_screen.presentation.AndroidVolunteeringListScreenViewModel
+import com.example.dogoodmobile.android.list_screen.presentation.VolunteeringListScreen
 import com.example.dogoodmobile.android.main_screen.presentation.AndroidMainScreenViewModel
 import com.example.dogoodmobile.android.main_screen.presentation.MainScreen
 import com.example.dogoodmobile.volunteering.detail.presentation.DetailScreenEvent
+import com.example.dogoodmobile.volunteering.list.presentation.ListScreenEvent
 import com.example.dogoodmobile.volunteering.main.presentation.MainScreenEvent
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -95,7 +98,7 @@ fun DoGoodAppNavHost() {
                 onEvent = { event ->
                     when (event) {
                         is MainScreenEvent.ChooseVolunteeringType -> {
-                            navController.navigate(Routes.DETAIL + "/${event.id}")
+                            navController.navigate(Routes.LIST + "/${event.id}")
                         }
                         is MainScreenEvent.ClickFeaturedVolunteeringAd -> {
                             navController.navigate(Routes.DETAIL + "/${event.id}")
@@ -106,8 +109,32 @@ fun DoGoodAppNavHost() {
                 }
             )
         }
-        composable(route = Routes.LIST) {
+        composable(
+            route = Routes.LIST + "/{typeId}",
+            arguments = listOf(
+                navArgument("typeId") {
+                    type = NavType.StringType
+                }
+            )
+        ) {
+            val viewModel = hiltViewModel<AndroidVolunteeringListScreenViewModel>()
+            val state by viewModel.state.collectAsState()
+            val typeId = it.arguments?.getString("typeId") ?: "1"
 
+            VolunteeringListScreen(
+                state = state,
+                typeId = typeId,
+                onEvent = { event ->
+                    when (event) {
+                        ListScreenEvent.ClickBackButton -> {
+                            navController.navigate(Routes.MAIN_SCREEN)
+                        }
+                        else -> {
+                            viewModel.onEvent(event)
+                        }
+                    }
+                }
+            )
         }
         composable(
             route = Routes.DETAIL + "/{detailId}",
@@ -119,11 +146,11 @@ fun DoGoodAppNavHost() {
         ) {
             val viewModel = hiltViewModel<AndroidDetailScreenViewModel>()
             val state by viewModel.state.collectAsState()
-            val languageCode = it.arguments?.getString("detailId") ?: "1"
+            val detailId = it.arguments?.getString("detailId") ?: "1"
 
             DetailScreen(
                 state = state,
-                volunteeringDetailId = languageCode,
+                volunteeringDetailId = detailId,
                 onEvent = { event ->
                     when (event) {
                         is DetailScreenEvent.ClickBackButton -> {

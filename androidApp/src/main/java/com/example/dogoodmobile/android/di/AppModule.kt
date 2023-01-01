@@ -3,6 +3,9 @@ package com.example.dogoodmobile.android.di
 import com.example.dogoodmobile.volunteering.detail.data.VolunteeringDetailClientImpl
 import com.example.dogoodmobile.volunteering.detail.domain.GetVolunteeringDetailUseCase
 import com.example.dogoodmobile.volunteering.detail.domain.VolunteeringDetailClient
+import com.example.dogoodmobile.volunteering.list.data.VolunteeringListClientImpl
+import com.example.dogoodmobile.volunteering.list.domain.GetVolunteeringListUseCase
+import com.example.dogoodmobile.volunteering.list.domain.VolunteeringListClient
 import com.example.dogoodmobile.volunteering.main.data.MainScreenClientImpl
 import com.example.dogoodmobile.volunteering.main.domain.GetRandomVolunteeringUseCase
 import com.example.dogoodmobile.volunteering.main.domain.MainScreenClient
@@ -43,5 +46,19 @@ object AppModule {
         client: VolunteeringDetailClient
     ): GetVolunteeringDetailUseCase {
         return GetVolunteeringDetailUseCase(client)
+    }
+
+    @Provides
+    @Singleton
+    fun provideVolunteeringListScreenClient(): VolunteeringListClient {
+        return VolunteeringListClientImpl()
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetVolunteeringListUseCase(
+        client: VolunteeringListClient
+    ): GetVolunteeringListUseCase {
+        return GetVolunteeringListUseCase(client)
     }
 }

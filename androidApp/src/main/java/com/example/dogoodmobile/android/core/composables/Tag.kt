@@ -16,7 +16,7 @@ fun Tag(text: String) {
         onClick = {},
         colors = ButtonDefaults.buttonColors(backgroundColor = lightColors.secondary),
         shape = RoundedCornerShape(size = 12.dp),
-        modifier = Modifier.padding(end = 8.dp, bottom = 8.dp)
+        modifier = Modifier.padding(end = 10.dp, bottom = 8.dp)
     ) {
         Text(text = text)
     }

@@ -91,7 +91,9 @@ fun MainScreen(
             }
             item {
                 VolunteeringTypeIcons(
-                    onVolunteeringTypeClicked = {}
+                    onVolunteeringTypeClicked = {
+                        onEvent(MainScreenEvent.ChooseVolunteeringType(it))
+                    }
                 )
             }
 

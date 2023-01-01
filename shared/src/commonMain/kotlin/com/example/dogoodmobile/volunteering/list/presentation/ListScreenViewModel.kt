@@ -43,7 +43,7 @@ class ListScreenViewModel(
                         }
                         is Resource.Success -> {
                             _state.update {
-                                it.copy(volunteeringList = it.volunteeringList)
+                                it.copy(volunteeringList = result.data ?: listOf())
                             }
                         }
                     }

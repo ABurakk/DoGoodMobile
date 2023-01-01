@@ -8,5 +8,7 @@ data class Volunteering(
     val detail: String,
     val ownerName: String,
     val location: Location,
-    val tags: List<String> = listOf()
+    val tags: List<String> = listOf(),
+    val day: String = "28",
+    val month: String = "April"
 )
