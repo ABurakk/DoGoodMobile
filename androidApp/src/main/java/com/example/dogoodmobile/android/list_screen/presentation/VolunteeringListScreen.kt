@@ -15,8 +15,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.dogoodmobile.android.core.composables.BackArrowIcon
+import com.example.dogoodmobile.android.core.composables.ClickableTagButton
 import com.example.dogoodmobile.android.core.composables.DoGoodAppTopAppBar
-import com.example.dogoodmobile.android.core.composables.Tag
 import com.example.dogoodmobile.android.core.theme.lightColors
 import com.example.dogoodmobile.android.list_screen.presentation.composable.VolunteeringListItem
 import com.example.dogoodmobile.core.domain.VolunteeringType
@@ -33,12 +33,14 @@ fun VolunteeringListScreen(
 ) {
     val context = LocalContext.current
     LaunchedEffect(key1 = state) {
-        onEvent(ListScreenEvent.LoadVolunteeringListByType(getTypeById(typeId)))
         val message = state.errorText
         message?.let {
             Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             onEvent(ListScreenEvent.ErrorSeen)
         }
+    }
+    LaunchedEffect(key1 = 1) {
+        onEvent(ListScreenEvent.LoadVolunteeringListByType(getTypeById(typeId)))
     }
 
     Scaffold(
@@ -72,7 +74,11 @@ fun VolunteeringListScreen(
                     modifier = Modifier.padding(top = 8.dp, start = 8.dp)
                 ) {
                     items(count = 9) {
-                        Tag(text = getTypeById((it + 1).toString()).title)
+                        ClickableTagButton(
+                            type = getTypeById((it + 1).toString()),
+                            onClick = { type ->
+                                onEvent(ListScreenEvent.ClickVolunteeringTypeTag(type))
+                            })
                     }
                 }
             }

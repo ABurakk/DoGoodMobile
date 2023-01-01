@@ -49,8 +49,8 @@ class ListScreenViewModel(
                     }
                 }
             }
-            is ListScreenEvent.ClickVolunteering -> {
-
+            is ListScreenEvent.ClickVolunteeringTypeTag -> {
+                onEvent(LoadVolunteeringListByType(event.type))
             }
 
             else -> Unit

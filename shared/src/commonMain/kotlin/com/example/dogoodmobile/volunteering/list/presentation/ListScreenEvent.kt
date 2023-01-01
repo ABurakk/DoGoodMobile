@@ -6,5 +6,6 @@ sealed class ListScreenEvent {
     object ClickBackButton : ListScreenEvent()
     object ErrorSeen : ListScreenEvent()
     data class ClickVolunteering(val id: String) : ListScreenEvent()
+    data class ClickVolunteeringTypeTag(val type: VolunteeringType) : ListScreenEvent()
     data class LoadVolunteeringListByType(val type: VolunteeringType) : ListScreenEvent()
 }
