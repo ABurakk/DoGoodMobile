@@ -40,7 +40,7 @@ struct ProfileHeadline: View {
             .cornerRadius(12)
             
         }
-        .padding(.horizontal, 32)
+        .padding(.horizontal, 24)
     }
 }
 
