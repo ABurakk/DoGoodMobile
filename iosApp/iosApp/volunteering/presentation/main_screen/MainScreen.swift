@@ -23,23 +23,18 @@ struct MainScreen: View {
     var body: some View {
         VStack(){
                         
-            ProfileHeadline{
-                
-            }.alignmentGuide(.top) { d in d[.top] }.padding(.top, 30).padding(.bottom, 20)
+            ProfileHeadline{}.alignmentGuide(.top) { d in d[.top] }.padding(.top, 30).padding(.bottom, 20)
             
-            VolunteeringTypeIcons{ volunteeringType in
+            VolunteeringTypeIcons{ volunteeringType in print(volunteeringType)}
+            
+            FeaturedRow{
+                mainScreenViewModel.onEvent(event: MainScreenEvent.ClickRefreshFeaturedAd())
             }
             
-            ZStack(alignment: .bottom) {
-                Image(mainScreenViewModel.state.randomVolunteeringAd == nil ? "a" : mainScreenViewModel.state.randomVolunteeringAd!.type.title.lowercased())
-                    .resizable()
-                    .cornerRadius(16)
-                    
-                FeaturedAdInfoButton(volunteering: mainScreenViewModel.state.randomVolunteeringAd) { id in
-                                    }
-                .padding(16)
-                
-            }.frame(width: .infinity, height: 250).padding(16)
+            FeaturedAd(
+                   volunteering: mainScreenViewModel.state.randomVolunteeringAd,volunteeringAdTitle: mainScreenViewModel.state.randomVolunteeringAd == nil ? "a" : mainScreenViewModel.state.randomVolunteeringAd!.type.title.lowercased()){
+                id in
+            }
             
             Spacer()
         }
@@ -172,4 +167,50 @@ struct VolunteeringTypeRow2: View {
         }
     }
 }
+
+
+struct FeaturedRow: View {
+    
+    var onRefreshClicked: () -> Void
+    
+    var body: some View {
+        HStack {
+            Text("Featured")
+                .font(.system(size: 20))
+                .fontWeight(.semibold)
+                .padding(.leading, 16)
+
+            Spacer()
+            
+            Button(action: { onRefreshClicked() }) {
+                Image(
+                    systemName: "arrow.clockwise"
+                )
+            }.foregroundColor(.gray)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.leading, 16).padding(.trailing, 30).padding(.top, 16)
+    }
+}
+
+struct FeaturedAd: View {
+    var volunteering: Volunteering?
+    var volunteeringAdTitle: String
+    var onAdClick: (String) -> Void
+    
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            Image(volunteeringAdTitle)
+                .resizable()
+                .cornerRadius(16)
+                
+            FeaturedAdInfoButton(volunteering: self.volunteering) { id in
+                onAdClick(id)
+                                }
+            .padding(16)
+            
+        }.frame(width: .infinity, height: 250).padding(.leading, 16).padding(.trailing, 16).padding(.top, 4)
+    }
+}
+
 
