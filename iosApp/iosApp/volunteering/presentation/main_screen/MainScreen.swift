@@ -30,6 +30,17 @@ struct MainScreen: View {
             VolunteeringTypeIcons{ volunteeringType in
             }
             
+            ZStack(alignment: .bottom) {
+                Image(mainScreenViewModel.state.randomVolunteeringAd == nil ? "a" : mainScreenViewModel.state.randomVolunteeringAd!.type.title.lowercased())
+                    .resizable()
+                    .cornerRadius(16)
+                    
+                FeaturedAdInfoButton(volunteering: mainScreenViewModel.state.randomVolunteeringAd) { id in
+                                    }
+                .padding(16)
+                
+            }.frame(width: .infinity, height: 250).padding(16)
+            
             Spacer()
         }
         .onAppear{
@@ -81,7 +92,7 @@ struct VolunteeringTypeRow1: View {
             )
             VolunteeringButton(
                 iconSource: "book",
-                color: .red,
+                color: .blue,
                 name: "Education",
                 isTextVisible: true,
                 onClick: { onVolunteeringTypeClicked(VolunteeringType.education.id) }
