@@ -21,13 +21,16 @@ struct MainScreen: View {
     }
     
     var body: some View {
-        VStack{
+        VStack(){
+                        
             ProfileHeadline{
                 
-            }
+            }.alignmentGuide(.top) { d in d[.top] }.padding(.top, 30).padding(.bottom, 20)
             
             VolunteeringTypeIcons{ volunteeringType in
             }
+            
+            Spacer()
         }
         .onAppear{
             mainScreenViewModel.startObserving()
@@ -40,7 +43,7 @@ struct MainScreen: View {
 
 
 struct VolunteeringTypeIcons: View {
-    @State private var expandedState = false
+    @State private var expandedState = true
 
     var onVolunteeringTypeClicked: (String) -> Void
 

@@ -7,7 +7,15 @@ struct ContentView: View {
     private let appModule = AppModule()
     
 	var body: some View {
-        MainScreen(getRandomVolunteeringUseCase: appModule.getRandomVolunteeringUseCase)
+        
+        NavigationView {
+            
+            MainScreen(getRandomVolunteeringUseCase: appModule.getRandomVolunteeringUseCase)
+                .navigationTitle("Home")
+                .navigationBarTitleDisplayMode(.inline)
+        }
+        
+        
 	}
 }
 
