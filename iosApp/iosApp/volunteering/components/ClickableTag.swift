@@ -19,7 +19,7 @@ struct ClickableTagButton: View {
                 self.onClick(self.type)
             },
             label: {
-                Text(type.name).foregroundColor(Color.black)
+                Text(type.title).foregroundColor(Color.black)
             }
         )
         .padding(.horizontal, 10)
