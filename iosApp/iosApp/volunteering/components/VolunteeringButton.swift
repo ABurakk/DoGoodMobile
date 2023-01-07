@@ -17,14 +17,14 @@ struct VolunteeringButton: View {
     let name: String
     let isTextVisible: Bool
     var isNavigationEnable: Bool = true
-    var typeId: String = ""
+    var type: VolunteeringType = VolunteeringType.immigration
     let onClick: () -> Void
     
     var body: some View {
         
         if(isNavigationEnable){
             NavigationLink(
-                destination: ListScreen(typeId: self.typeId)
+                destination: ListScreen(type: self.type)
             ){
                 VStack(
                     alignment: .center,
