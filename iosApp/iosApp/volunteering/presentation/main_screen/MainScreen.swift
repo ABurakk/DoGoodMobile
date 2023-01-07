@@ -83,6 +83,7 @@ struct VolunteeringTypeRow1: View {
                 color: .orange,
                 name: "Medical",
                 isTextVisible: true,
+                typeId: VolunteeringType.medical.id,
                 onClick: { onVolunteeringTypeClicked(VolunteeringType.medical.id) }
             )
             VolunteeringButton(
@@ -90,6 +91,7 @@ struct VolunteeringTypeRow1: View {
                 color: .blue,
                 name: "Education",
                 isTextVisible: true,
+                typeId: VolunteeringType.education.id,
                 onClick: { onVolunteeringTypeClicked(VolunteeringType.education.id) }
             )
             VolunteeringButton(
@@ -97,6 +99,7 @@ struct VolunteeringTypeRow1: View {
                 color: .pink,
                 name: "Social Services",
                 isTextVisible: true,
+                typeId: VolunteeringType.socialServices.id,
                 onClick: { onVolunteeringTypeClicked(VolunteeringType.socialServices.id) }
             )
             if volunteeringTypeExpandState {
@@ -105,6 +108,7 @@ struct VolunteeringTypeRow1: View {
                     color: .green,
                     name: "Elder Care",
                     isTextVisible: true,
+                    typeId: VolunteeringType.elderCare.id,
                     onClick: {
                         if volunteeringTypeExpandState {
                             onVolunteeringTypeClicked(VolunteeringType.elderCare.id)
@@ -119,6 +123,7 @@ struct VolunteeringTypeRow1: View {
                     color: .gray,
                     name: "Other",
                     isTextVisible: true,
+                    isNavigationEnable: false,
                     onClick: {
                         expandedStateChanged(!volunteeringTypeExpandState)
                     }
@@ -140,6 +145,7 @@ struct VolunteeringTypeRow2: View {
                 color: .green,
                 name: "Animal Rescue",
                 isTextVisible: true,
+                typeId: VolunteeringType.animalRescue.id,
                 onClick: { onVolunteeringTypeClicked(VolunteeringType.animalRescue.id) }
             )
             VolunteeringButton(
@@ -147,6 +153,7 @@ struct VolunteeringTypeRow2: View {
                 color: .purple,
                 name: "Homelessness",
                 isTextVisible: true,
+                typeId: VolunteeringType.homelessness.id,
                 onClick: { onVolunteeringTypeClicked(VolunteeringType.homelessness.id) }
             )
             VolunteeringButton(
@@ -154,6 +161,7 @@ struct VolunteeringTypeRow2: View {
                 color: .red,
                 name:"Immigration",
                 isTextVisible: true,
+                typeId: VolunteeringType.immigration.id,
                 onClick: {onVolunteeringTypeClicked(VolunteeringType.immigration.id)}
             )
             
@@ -162,6 +170,7 @@ struct VolunteeringTypeRow2: View {
                 color: .gray,
                 name:"Less",
                 isTextVisible: true,
+                isNavigationEnable: false,
                 onClick: {expandedStateChanged(false)}
             )
         }
