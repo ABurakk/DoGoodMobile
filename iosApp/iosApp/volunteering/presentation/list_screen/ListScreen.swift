@@ -67,9 +67,7 @@ struct VolunteeringList: View{
         ScrollView(.vertical){
             LazyVStack {
                 ForEach(list, id: \.self){ item in
-                    VolunteeringListItem(volunteering: item){ volunteeringId in
-                        print(volunteeringId)
-                    }.padding(.trailing,12).padding(.leading,12)
+                    VolunteeringListItem(volunteering: item).padding(.trailing,12).padding(.leading,12)
                     
                     Spacer(minLength: 12)
                 }
