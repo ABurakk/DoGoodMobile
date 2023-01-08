@@ -33,6 +33,6 @@ fun ClickableTagButton(type: VolunteeringType, onClick: (VolunteeringType) -> Un
         shape = RoundedCornerShape(size = 12.dp),
         modifier = Modifier.padding(end = 10.dp, bottom = 8.dp)
     ) {
-        Text(text = type.name)
+        Text(text = type.title)
     }
 }

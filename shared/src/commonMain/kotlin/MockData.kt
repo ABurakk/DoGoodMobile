@@ -11,7 +11,9 @@ object MockData {
             "Teacher needed for 5 hours a week",
             "Municipality",
             Location("Turkey", "Ankara"),
-            listOf("Education", "Tutoring", "Math", "Children", "Students")
+            listOf("Education", "Tutoring", "Math", "Children", "Students"),
+            day = "12",
+            month = "May"
         ),
         Volunteering(
             2,
@@ -20,7 +22,9 @@ object MockData {
             "Assist with patient intake and record-keeping",
             "Community Health Center",
             Location("United States", "New York"),
-            listOf("Medical", "Healthcare", "Volunteer", "Clinic", "Patient care")
+            listOf("Medical", "Healthcare", "Volunteer", "Clinic", "Patient care"),
+            day = "17",
+            month = "April"
         ),
         Volunteering(
             3,
@@ -29,7 +33,9 @@ object MockData {
             "Help sort and distribute donations",
             "Food Bank Inc.",
             Location("United States", "Chicago"),
-            listOf("Social services", "Volunteer", "Food bank", "Donations")
+            listOf("Social services", "Volunteer", "Food bank", "Donations"),
+            day = "3",
+            month = "January"
         ),
         Volunteering(
             4,
@@ -38,7 +44,9 @@ object MockData {
             "Assist with daily activities and provide companionship",
             "Senior Living Facility",
             Location("United States", "Los Angeles"),
-            listOf("Elder care", "Volunteer", "Daily activities", "Companionship", "Senior living")
+            listOf("Elder care", "Volunteer", "Daily activities", "Companionship", "Senior living"),
+            day = "23",
+            month = "October"
         ),
         Volunteering(
             5,
@@ -54,7 +62,9 @@ object MockData {
                 "Meal service",
                 "Support",
                 "Shelter"
-            )
+            ),
+            day = "9",
+            month = "November"
         ),
         Volunteering(
             6,
@@ -68,7 +78,9 @@ object MockData {
                 "Volunteer",
                 "Translation",
                 "Legal assistance"
-            )
+            ),
+            day = "11",
+            month = "November"
         ),
         Volunteering(
             7,
@@ -83,7 +95,9 @@ object MockData {
                 "Animal care",
                 "Feeding",
                 "Shelter"
-            )
+            ),
+            day = "19",
+            month = "November"
         ),
         Volunteering(
             8,
@@ -97,7 +111,9 @@ object MockData {
                 "Volunteer",
                 "Disaster response",
                 "Recovery efforts"
-            )
+            ),
+            day = "5",
+            month = "March"
         ),
         Volunteering(
             9,
@@ -111,7 +127,9 @@ object MockData {
                 "Volunteer",
                 "Meal preparation",
                 "Meal distribution"
-            )
+            ),
+            day = "15",
+            month = "March"
         ),
         Volunteering(
             10,
@@ -120,7 +138,9 @@ object MockData {
             "Teacher needed for 2 hours a week",
             "Community Center",
             Location("France", "Paris"),
-            tags = listOf("education", "teaching", "language")
+            tags = listOf("education", "teaching", "language"),
+            day = "15",
+            month = "July"
         ),
 
         Volunteering(
@@ -130,7 +150,9 @@ object MockData {
             "Help clean up the beach and protect marine life",
             "Environmental Protection Agency",
             Location("Spain", "Barcelona"),
-            tags = listOf("environmental", "conservation", "outdoor work")
+            tags = listOf("environmental", "conservation", "outdoor work"),
+            day = "18",
+            month = "July"
         ),
 
         Volunteering(
@@ -140,7 +162,9 @@ object MockData {
             "Assist with patient care and non-medical tasks",
             "General Hospital",
             Location("Germany", "Berlin"),
-            tags = listOf("healthcare", "hospital work")
+            tags = listOf("healthcare", "hospital work"),
+            day = "11",
+            month = "July"
         ),
 
         Volunteering(
@@ -150,7 +174,9 @@ object MockData {
             "Help care for and socialize with the animals",
             "Animal Shelter Society",
             Location("Italy", "Rome"),
-            tags = listOf("animal care", "shelter work", "teamwork", "communication", "patience")
+            tags = listOf("animal care", "shelter work", "teamwork", "communication", "patience"),
+            day = "8",
+            month = "September"
         )
     )
 }
