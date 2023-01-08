@@ -15,7 +15,7 @@ struct Tag: View {
         Button(
             action: {},
             label: {
-                Text(text).foregroundColor(Color.black)
+                Text(text).foregroundColor(Color.black).lineLimit(1)
             }
         )
         .padding(.horizontal, 10)
