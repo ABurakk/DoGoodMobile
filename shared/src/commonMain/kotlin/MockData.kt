@@ -13,7 +13,8 @@ object MockData {
             Location("Turkey", "Ankara"),
             listOf("Education", "Tutoring", "Math", "Children", "Students"),
             day = "12",
-            month = "May"
+            month = "May",
+            ownerMailAddress = "charlie@gmail.com"
         ),
         Volunteering(
             2,
@@ -24,7 +25,8 @@ object MockData {
             Location("United States", "New York"),
             listOf("Medical", "Healthcare", "Volunteer", "Clinic", "Patient care"),
             day = "17",
-            month = "April"
+            month = "April",
+            ownerMailAddress = "alice@gmail.com"
         ),
         Volunteering(
             3,
@@ -35,7 +37,8 @@ object MockData {
             Location("United States", "Chicago"),
             listOf("Social services", "Volunteer", "Food bank", "Donations"),
             day = "3",
-            month = "January"
+            month = "January",
+            ownerMailAddress = "bob@gmail.com"
         ),
         Volunteering(
             4,
@@ -46,7 +49,8 @@ object MockData {
             Location("United States", "Los Angeles"),
             listOf("Elder care", "Volunteer", "Daily activities", "Companionship", "Senior living"),
             day = "23",
-            month = "October"
+            month = "October",
+            ownerMailAddress = "george@gmail.com"
         ),
         Volunteering(
             5,
@@ -64,7 +68,8 @@ object MockData {
                 "Shelter"
             ),
             day = "9",
-            month = "November"
+            month = "November",
+            ownerMailAddress = "julia@gmail.com"
         ),
         Volunteering(
             6,
@@ -80,7 +85,8 @@ object MockData {
                 "Legal assistance"
             ),
             day = "11",
-            month = "November"
+            month = "November",
+            ownerMailAddress = "kotlin@gmail.com"
         ),
         Volunteering(
             7,
@@ -97,7 +103,8 @@ object MockData {
                 "Shelter"
             ),
             day = "19",
-            month = "November"
+            month = "November",
+            ownerMailAddress = "george@gmail.com"
         ),
         Volunteering(
             8,
@@ -113,7 +120,8 @@ object MockData {
                 "Recovery efforts"
             ),
             day = "5",
-            month = "March"
+            month = "March",
+            ownerMailAddress = "alice@gmail.com"
         ),
         Volunteering(
             9,
@@ -129,7 +137,8 @@ object MockData {
                 "Meal distribution"
             ),
             day = "15",
-            month = "March"
+            month = "March",
+            ownerMailAddress = "bob@gmail.com"
         ),
         Volunteering(
             10,
@@ -140,7 +149,9 @@ object MockData {
             Location("France", "Paris"),
             tags = listOf("education", "teaching", "language"),
             day = "15",
-            month = "July"
+            month = "July",
+            ownerMailAddress = "donald@gmail.com"
+
         ),
 
         Volunteering(
@@ -152,7 +163,9 @@ object MockData {
             Location("Spain", "Barcelona"),
             tags = listOf("environmental", "conservation", "outdoor work"),
             day = "18",
-            month = "July"
+            month = "July",
+            ownerMailAddress = "joe@gmail.com"
+
         ),
 
         Volunteering(
@@ -164,7 +177,9 @@ object MockData {
             Location("Germany", "Berlin"),
             tags = listOf("healthcare", "hospital work"),
             day = "11",
-            month = "July"
+            month = "July",
+            ownerMailAddress = "marc@gmail.com"
+
         ),
 
         Volunteering(
@@ -176,7 +191,9 @@ object MockData {
             Location("Italy", "Rome"),
             tags = listOf("animal care", "shelter work", "teamwork", "communication", "patience"),
             day = "8",
-            month = "September"
+            month = "September",
+            ownerMailAddress = "bill@gmail.com"
+
         )
     )
 }

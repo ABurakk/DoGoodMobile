@@ -10,5 +10,6 @@ data class Volunteering(
     val location: Location,
     val tags: List<String> = listOf(),
     val day: String,
-    val month: String
+    val month: String,
+    val ownerMailAddress: String = ""
 )
