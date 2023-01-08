@@ -32,9 +32,7 @@ struct MainScreen: View {
             }
             
             FeaturedAd(
-                   volunteering: mainScreenViewModel.state.randomVolunteeringAd,volunteeringAdTitle: mainScreenViewModel.state.randomVolunteeringAd == nil ? "a" : mainScreenViewModel.state.randomVolunteeringAd!.type.title.lowercased()){
-                id in
-            }
+                   volunteering: mainScreenViewModel.state.randomVolunteeringAd,volunteeringAdTitle: mainScreenViewModel.state.randomVolunteeringAd == nil ? "a" : mainScreenViewModel.state.randomVolunteeringAd!.type.title.lowercased())
             
             Spacer()
         }
@@ -205,7 +203,6 @@ struct FeaturedRow: View {
 struct FeaturedAd: View {
     var volunteering: Volunteering?
     var volunteeringAdTitle: String
-    var onAdClick: (String) -> Void
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -213,10 +210,10 @@ struct FeaturedAd: View {
                 .resizable()
                 .cornerRadius(16)
                 
-            FeaturedAdInfoButton(volunteering: self.volunteering) { id in
-                onAdClick(id)
-                                }
-            .padding(16)
+            NavigationLink(destination: DetailScreen(volunteerinID: String(volunteering?.id ?? 1))){
+                FeaturedAdInfoButton(volunteering: self.volunteering).padding(16)
+            }
+            
             
         }.frame(width: .infinity, height: 250).padding(.leading, 16).padding(.trailing, 16).padding(.top, 4)
     }

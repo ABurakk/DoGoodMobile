@@ -12,14 +12,13 @@ import shared
 
 struct FeaturedAdInfoButton: View {
     let volunteering: Volunteering?
-    let onDetailClicked: (String) -> Void
-
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
                 .foregroundColor(Color.lightBlueGrey)
                 .frame(height: 96)
-
+            
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .top, spacing: 0) {
                     VStack(alignment: .leading, spacing: 6) {
@@ -27,7 +26,7 @@ struct FeaturedAdInfoButton: View {
                         let title = volunteering?.title ?? ""
                         let ownerName = volunteering?.ownerName ?? ""
                         let country = volunteering?.location.country ?? ""
-
+                        
                         Text(title)
                             .font(.system(size: 18, weight: .semibold))
                             .foregroundColor(Color.onBackground)
@@ -35,7 +34,7 @@ struct FeaturedAdInfoButton: View {
                             .lineLimit(1)
                             .truncationMode(.tail)
                             .padding(.horizontal, 12)
-
+                        
                         Text("by " + ownerName + " at " + country)
                             .font(.system(size: 14, weight: .regular))
                             .foregroundColor(Color.onBackground)
@@ -45,11 +44,9 @@ struct FeaturedAdInfoButton: View {
                             .padding(.horizontal, 12)
                             .padding(.bottom, 10)
                     }
-
+                    
                     Button(action: {
-                        // Use nil-coalescing operator to handle nil case
-                        let typeId = volunteering?.type.id ?? ""
-                        onDetailClicked(typeId)
+
                     }) {
                         Image(systemName: "arrow.right")
                             .foregroundColor(.white)
@@ -60,26 +57,7 @@ struct FeaturedAdInfoButton: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
             }
+            
         }
     }
 }
-
-
-struct FeaturedAdInfoButton_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            FeaturedAdInfoButton(
-                volunteering: MockData().volunteeringList().first,
-                onDetailClicked: { _ in }
-            )
-            .previewLayout(.sizeThatFits)
-            .padding()
-            .background(Color.gray)
-            .previewDisplayName("Volunteering ad with all fields")
-        }
-    }
-}
-
-
-
-

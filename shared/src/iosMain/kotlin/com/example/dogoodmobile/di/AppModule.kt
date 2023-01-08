@@ -1,5 +1,8 @@
 package com.example.dogoodmobile.di
 
+import com.example.dogoodmobile.volunteering.detail.data.VolunteeringDetailClientImpl
+import com.example.dogoodmobile.volunteering.detail.domain.GetVolunteeringDetailUseCase
+import com.example.dogoodmobile.volunteering.detail.domain.VolunteeringDetailClient
 import com.example.dogoodmobile.volunteering.list.data.VolunteeringListClientImpl
 import com.example.dogoodmobile.volunteering.list.domain.GetVolunteeringListUseCase
 import com.example.dogoodmobile.volunteering.list.domain.VolunteeringListClient
@@ -16,11 +19,19 @@ class AppModule {
         VolunteeringListClientImpl()
     }
 
+    private val detailScreenClient: VolunteeringDetailClient by lazy {
+        VolunteeringDetailClientImpl()
+    }
+
     val getRandomVolunteeringUseCase: GetRandomVolunteeringUseCase by lazy {
         GetRandomVolunteeringUseCase(mainScreenClient)
     }
 
     val getVolunteeringListUseCase: GetVolunteeringListUseCase by lazy {
         GetVolunteeringListUseCase(client = listScreenClient)
+    }
+
+    val getVolunteeringDetailUseCase: GetVolunteeringDetailUseCase by lazy {
+        GetVolunteeringDetailUseCase(detailScreenClient)
     }
 }
