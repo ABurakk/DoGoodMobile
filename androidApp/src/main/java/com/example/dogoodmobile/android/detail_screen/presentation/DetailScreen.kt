@@ -1,6 +1,8 @@
 package com.example.dogoodmobile.android.detail_screen.presentation
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -30,6 +32,7 @@ import com.example.dogoodmobile.android.main_screen.presentation.composables.Vol
 import com.example.dogoodmobile.volunteering.detail.presentation.DetailScreenEvent
 import com.example.dogoodmobile.volunteering.detail.presentation.DetailScreenState
 import com.google.accompanist.flowlayout.FlowRow
+
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -72,13 +75,16 @@ fun DetailScreen(
         }
     ) {
         state.volunteering?.let {
-            DetailScreenContent(uiVolunteering = UiVolunteering(it))
+            DetailScreenContent(uiVolunteering = UiVolunteering(it), context = context)
         }
     }
 }
 
 @Composable
-fun DetailScreenContent(uiVolunteering: UiVolunteering) {
+fun DetailScreenContent(
+    context: Context,
+    uiVolunteering: UiVolunteering
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -180,7 +186,20 @@ fun DetailScreenContent(uiVolunteering: UiVolunteering) {
         item {
             Column {
                 Button(
-                    onClick = {},
+                    onClick = {
+                        val intent = Intent(Intent.ACTION_SEND)
+                        intent.type = "message/rfc822"
+                        intent.putExtra(
+                            Intent.EXTRA_EMAIL,
+                            arrayOf("${uiVolunteering.volunteering?.ownerMailAddress}")
+                        )
+                        intent.putExtra(
+                            Intent.EXTRA_SUBJECT,
+                            "About ${uiVolunteering.volunteering?.title}"
+                        )
+                        intent.setPackage("com.google.android.gm")
+                        context.startActivity(intent)
+                    },
                     colors = ButtonDefaults.buttonColors(backgroundColor = lightColors.primary),
                     modifier = Modifier
                         .fillMaxWidth()
