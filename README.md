@@ -49,3 +49,6 @@ For the prod version of the app, we need to connect the endponits which implemen
 
 * Adding a feature for users to create and post their own volunteering opportunities. This could involve creating a new screen within the app where users can input information about their volunteer opportunity, such as the type of work, location, time commitments, and contact information.
 * Enable the communication functionality to the app: This includes allowing users to easily contact the organization hosting the volunteer opportunity through the app itself, rather than redirecting them to the mail app.
+
+## LICENCE
+DoGood Mobile is distributed under the terms of the MIT License.
