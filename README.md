@@ -22,7 +22,7 @@ The problem that the DoGoodMobile app is trying to solve is the difficulty that 
 The app is aimed at people who want to volunteer their free time and make a positive impact in their community, but are experiencing challenges in identifying and participating in volunteer projects that align with their interests and are located in their area.
 
 ## Why is it important to adress this problem ?
-Finding and connecting with volunteering opportunities can be a problem because of lack of information and difficulty in finding the right opportunities that align with the individual's interests. Addressing this problem is important as it allows individuals to give back to their communities and make a positive impact, while also providing personal benefits. DoGoodMobile app aims to make it easy for people to find and connect with local volunteer opportunities, which will increase participation and ultimately benefit the society.
+Finding and connecting with volunteering opportunities can be a problem because of lack of information and difficulty in finding the right opportunities that align with the individual's interests. Addressing this problem is important as it allows individuals to give back to their communities and make a positive impact, while also providing personal benefits. DoGoodMobile app aims to make it easy for people to find and connect with volunteer opportunities, which will increase participation and ultimately benefit the society.
 
 https://user-images.githubusercontent.com/64445944/211913764-cd8ed90e-a9a6-4493-a600-528ae8e2bc4e.MP4
 
@@ -34,7 +34,7 @@ https://user-images.githubusercontent.com/64445944/211913764-cd8ed90e-a9a6-4493-
 | 🖥️ User Interface (Android, iOS) | Jetpack Compose / SwiftUI                                                                                                          |
 | 🧩 Architecture                         | MVI + Clean Architecture                                                                                                        |
 | 💉 DI (Android)                         | Hilt                                                                                                                                                 |
-| 🔃 Async                                | Coroutines + Kotlin Flow + Special Flow Classes for IOS | |
+| 🔃 Async                                | Coroutines + Kotlin Flow + Flow Classes for IOS | |
                                 
 
 * Data Related Classes: 100% of the code, including the parts that handle communicating with remote APIs and returning mock data for local usage.
