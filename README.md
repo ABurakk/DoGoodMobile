@@ -41,6 +41,8 @@ https://user-images.githubusercontent.com/64445944/211913764-cd8ed90e-a9a6-4493-
 * Domain Layer Classes : Almost %100 of code shared: Mapping lists, CommonFlow, CommonMutableStateFlow, and data classes such as Volunteering and Volunteering Type.
 * Presentation Layer: In this project, I followed the Model-View-Intent (MVI) pattern and I shared 100% of the event and state classes, which include Screen's logic (text value, navigation etc.) . Alongiside these classes, I shared the majority of the logic within the ViewModel class, but since we have some platform-specific features, such as the ViewModel's scope in Android or @Published in IOS, I implemented separate viewmodels for each platform to use these and shared viewmodels.
 
+I tried to explain my approach for sharing viewmodel in this [medium article](https://ahmetburakilhan.medium.com/eb1c10f17e2b)
+
 ###  DoGood Mobile Data
 The current version of the DoGoodMobile app uses a set of pre-populated, static data stored locally on the device, allowing users to test and explore the user interface without the need for any additional setup or configuration.
 For the prod version of the app, we need to connect the endponits which implemented on another BE project that uses Ktor and MongoDB. Here is the link of BE.
